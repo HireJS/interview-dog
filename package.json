@@ -8,6 +8,11 @@
 		"type-check": "tsc"
 	},
 	"dependencies": {
+		"@chakra-ui/next-js": "^2.1.2",
+		"@chakra-ui/react": "^2.5.5",
+		"@emotion/react": "^11.10.6",
+		"@emotion/styled": "^11.10.6",
+		"framer-motion": "^10.11.6",
 		"next": "latest",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
