@@ -1,15 +1,24 @@
-import { Link } from "@chakra-ui/next-js";
+import { Auth } from "@supabase/auth-ui-react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import Layout from "../components/Layout";
+import Account from "../components/Account";
 
-const IndexPage = () => (
-	<Layout title="Home | Next.js + TypeScript Example">
-		<h1>Hello Next.js 👋</h1>
-		<p>
-			<Link href="/about" color="blue.300" _hover={{ color: "blue.500" }}>
-				About
-			</Link>
-		</p>
-	</Layout>
-);
+const IndexPage = () => {
+	const session = useSession();
+	const supabase = useSupabaseClient();
+	return (
+		<Layout title="Home | Next.js + TypeScript Example">
+			{!session ? (
+				<Auth
+					supabaseClient={supabase}
+					appearance={{ theme: ThemeSupa }}
+				/>
+			) : (
+				<Account session={session} />
+			)}
+		</Layout>
+	);
+};
 
 export default IndexPage;
